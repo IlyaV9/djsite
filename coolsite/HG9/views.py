@@ -9,15 +9,18 @@ menu = [{'title': "О сайте", 'url_name': 'about'},
         {'title': "Войти", 'url_name': 'login'},
 ]
 
-def index(reqvest):
+
+def index(request):
     posts = Product.objects.all()
+
     context = {
         'posts': posts,
         'menu': menu,
-        'title': 'Главная страница'
+        'title': 'Главная страница',
+        'cat_selected': 0,
     }
 
-    return render(reqvest, 'HG9/index.html', context=context)
+    return render(request, 'HG9/index.html', context=context)
 
 def about(request):
     return render(request, 'HG9/about.html', {'menu': menu, 'title': 'О сайте'})
@@ -33,3 +36,19 @@ def login(request):
 
 def show_post(request, post_id):
     return HttpResponse(f"Отображение статьи с id = {post_id}")
+
+
+def show_category(request, cat_id):
+    posts = Product.objects.filter(cat_id=cat_id)
+
+    if len(posts) == 0:
+        raise Http404()
+
+    context = {
+        'posts': posts,
+        'menu': menu,
+        'title': 'Отображение по рубрикам',
+        'cat_selected': cat_id,
+    }
+
+    return render(request, 'HG9/index.html', context=context)
