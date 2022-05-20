@@ -13,6 +13,7 @@
 {% endif %}
 
 				<h2>{{p.title}}</h2>
+				<h3>{{p.price}} руб/кг</h3>
 	{% autoescape on %} <!-- Включение выделения в базе данных -->
 	{{p.content|linebreaks|truncatewords:50}}
 	{% endautoescape %}
