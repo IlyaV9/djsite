@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+# Импорт функций и пакетов
 import os.path
 from pathlib import Path
 
@@ -23,13 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-h0ym7%s!v27$)r$hc)&aqqj=paht_8*+kncst14%)rf#ck%mg-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True # Включенный режим отладки
 
 ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# Все установленые приложения
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,6 +53,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'coolsite.urls'
 
+# Путь для поиска шаблонов
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -71,7 +73,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'coolsite.wsgi.application'
 
 
-# Database
+# Database подключение к sqlite3
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
@@ -104,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'ru' # Смена языка
 
 TIME_ZONE = 'UTC'
 
@@ -116,15 +118,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = []
+STATIC_URL = 'static/' # Префикс к URL для статических файлов
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Путь к общей папке
+STATICFILES_DIRS = [] # Список нестандартных путей
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# Описание констант
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Определение рабочей папки проекта
+MEDIA_URL = '/media/' # Добавление к графическим файлам префикса

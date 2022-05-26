@@ -1,26 +1,28 @@
+<!-- Шаблон базовой страницы -->
 {% load static %}
 {% load HG9_tags %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>{{title}}</title>
-	<link type="text/css" href="{% static 'HG9/css/styles.css' %}" rel="stylesheet" />
+	<link type="text/css" href="{% static 'HG9/css/styles.css' %}" rel="stylesheet" /> <!-- Подключение CSS -->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="shortcut icon" href="{% static 'HG9/images/main.ico' %}" type="image/x-icon"/>
+	<link rel="shortcut icon" href="{% static 'HG9/images/main.ico' %}" type="image/x-icon"/> <!-- Подключение иконки -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <table class="table-page" border=0 cellpadding="0" cellspacing="0">
 <tr><td valign=top>
-{% block mainmenu %}
+<!-- Блок меню -->
+	{% block mainmenu %}
 		<div class="header">
 			<ul id="mainmenu" class="mainmenu">
 			<li class="logo"><a href="{% url 'home' %}"><div class="logo"></div></a></li>
 {% for m in menu %}
 	{% if not forloop.last %}
-			<li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+			<li><a href="{% url m.url_name %}">{{m.title}}</a></li> <!-- Маршруты для главного меню -->
 	{% else %}
-			<li class="last"><a href="{% url m.url_name %}">{{m.title}}</a></li>
+			<li class="last"><a href="{% url m.url_name %}">{{m.title}}</a></li> <!-- Маршруты для главного меню -->
 	{% endif %}
 {% endfor %}
 			</ul>

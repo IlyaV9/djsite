@@ -13,20 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# Импорт функций и пакетов
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-
-
 from HG9.views import *
 from django.urls import path, include
-
 from coolsite import settings
 
+# Добавление маршрутов для пакета конфигурации
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('HG9.urls')),
 ]
 
+# В режиме отладки к маршрутам добавляется маршрут для графических/статических файлов
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,7 +1,8 @@
+# Импорт функций и пакетов
 from django.urls import path, re_path
-
 from .views import *
 
+# Добавление маршрутов для приложения
 urlpatterns = [
     path('', index, name='home'),
     path('about/', about, name='about'),
